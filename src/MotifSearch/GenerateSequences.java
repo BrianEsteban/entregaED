@@ -60,7 +60,7 @@ public class GenerateSequences {
     public static void saveSequence()
     {
         try{
-            FileWriter file = new FileWriter("C:/Documents and Settings/BRIAN/Mis documentos/sequences.txt"); //dirección donde se creará el archivo
+            FileWriter file = new FileWriter("C:/Motif/sequences.txt"); //dirección donde se creará el archivo
             BufferedWriter bw = new BufferedWriter(file);   //BufferedWriter escribe en el archivo
             
             Random rd = new Random();

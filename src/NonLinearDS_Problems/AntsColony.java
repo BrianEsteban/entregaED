@@ -1,7 +1,7 @@
 package NonLinearDS_Problems;
 
 import java.io.*;
-import Graphs.GraphList;
+import Graphs.GraphListMap;
 
 /**
  * Contest Problem: Ants Colony
@@ -24,14 +24,14 @@ public class AntsColony
         
         while( (ianthills = Integer.parseInt(br.readLine()) ) != 0) //lectura del número de hormigueros que mientras sea distinto a cero continua la ejecución
         {
-            GraphList g = new GraphList(ianthills); //se le pasa el números de hormigueros como parámetro al grafo para hallar el camino más corto
+            GraphListMap g = new GraphListMap(ianthills); //se le pasa el números de hormigueros como parámetro al grafo para hallar el camino más corto
             for (int i = 1; i < ianthills ; i++)
             {
                 String input = br.readLine();
                 String[] data = input.split(" ");   //se dividen las entradas, primero el hormiguero enlazado y segundo el peso que tiene el enlace que tomaremos como la longitud
                 String vA = data[0];
                 int Long = Integer.parseInt(data[1]);
-                g.addNode(new GraphList.Node(String.valueOf(i), vA, Long)); //se agrega el nodo al grafo 
+                g.addNode(new GraphListMap.Node(String.valueOf(i), vA, Long)); //se agrega el nodo al grafo 
             }    
             
             int question = Integer.parseInt(br.readLine()); //lectura del número de consultas

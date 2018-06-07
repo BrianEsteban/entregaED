@@ -83,30 +83,30 @@ public class Laberinto
      */
     public static void main(String[] args) 
     {
-            int height, weight, x = 0, y = 0;
-            Scanner sc = new Scanner( System.in );
-            height = sc.nextInt();
-            weight = sc.nextInt();
-            System.out.println("Ingrese el laberinto, con un solo valor inicial I, valor final sera S: ");
-            String line = sc.nextLine();			//funciona igual que getline o gets de c++
+        int height, weight, x = 0, y = 0;
+        Scanner sc = new Scanner( System.in );
+        height = sc.nextInt();
+        weight = sc.nextInt();
+        System.out.println("Ingrese el laberinto, con un solo valor inicial I, valor final sera S: ");
+        String line = sc.nextLine();			//funciona igual que getline o gets de c++
 
-            for (int i = 0; i < height; i++) 
-            {
-                    line = sc.nextLine();
+        for (int i = 0; i < height; i++) 
+        {
+                line = sc.nextLine();
 
-                    for(int j = 0; j < weight; j++)
-                    {
-                        ady[i][j] = line.charAt(j);
+                for(int j = 0; j < weight; j++)
+                {
+                    ady[i][j] = line.charAt(j);
 
-                        if(ady[i][j] == 'I')		 //obtengo coordenada de valor inicial
-                            x = i; y = j;
-                    }
-            }
-            int pathMin = BFS(x, y, height, weight);
-            
-            if( pathMin == -1 ) 
-                System.out.println("Imposible");
-            else 
-                System.out.println( "Camino más corto: " + pathMin );	
+                    if(ady[i][j] == 'I')		 //obtengo coordenada de valor inicial
+                        x = i; y = j;
+                }
+        }
+        int pathMin = BFS(x, y, height, weight);
+
+        if( pathMin == -1 ) 
+            System.out.println("Imposible");
+        else 
+            System.out.println( "Camino más corto: " + pathMin );	
     }
 }

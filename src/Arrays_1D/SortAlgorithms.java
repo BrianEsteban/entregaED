@@ -183,6 +183,39 @@ public class SortAlgorithms
         return temp;
     }
     
+     public void quickSort(int[] unsorted, int left, int right) 
+     {
+        int i = left;
+        int j = right;
+        int pivot = unsorted[left]; //el pivot de quicksort toma el primer valor del arreglo
+        
+        int aux;
+        
+        while (i < j) 
+        {
+            while (unsorted[i] <= pivot && i < j) //recorre de izquierda a derecha incrementando a i
+                i++;
+            
+            while (unsorted[j] > pivot) //recorre de derecha a izquierda disminuyendo a j
+                j--;
+            
+            if (i < j) 
+            {
+                aux = unsorted[i];  //aux para realizar el swap
+                unsorted[i] = unsorted[j];
+                unsorted[j] = aux;
+            }
+        }
+        unsorted[left] = unsorted[j];
+        unsorted[j] = pivot;
+        
+        if (left < j - 1)   //la parte de derecha a izquierda entra a recursión
+            quickSort(unsorted, left, j - 1);
+        
+        if (j + 1 < right)  //la parte de izquierda a derecha entra a recursión
+            quickSort(unsorted, j + 1, right);   
+    }
+   
     /**
      * quickSort que con su técnica divide y vencerás utiliza un pivote para ir comparando las posiciones y distribuir en sub-arreglos.
      * @param unsorted
@@ -190,7 +223,7 @@ public class SortAlgorithms
      * @param last
      * @return el arreglo de manera ascendente.
      */
-    public int[] quickSort(int[] unsorted, int first, int last)
+    public int[] quickSortPivotMedia(int[] unsorted, int first, int last)
     {
         int i = first;
         int j = last;
@@ -212,10 +245,10 @@ public class SortAlgorithms
         }
         int sorted[] = new int[unsorted.length];    //creación del nuevo arreglo con la misma dimensión
         if (first < j) 
-            sorted = quickSort(unsorted, first, j); //recursión con el su-arreglo de los menores
+            sorted = quickSortPivotMedia(unsorted, first, j); //recursión con el sub-arreglo de los menores
         
         if (last > i) 
-            sorted = quickSort(unsorted, i, last);  //recursión con el su-arreglo de los mayores
+            sorted = quickSortPivotMedia(unsorted, i, last);  //recursión con el sub-arreglo de los mayores
         
         return sorted;
     }    
@@ -422,7 +455,7 @@ public class SortAlgorithms
         SortAlgorithms sorts = new SortAlgorithms();
 
         int[] a = sorts.readArrayFronConsole();
-        a = sorts.bubleSort(a);
+        sorts.quickSort(a, 0, a.length-1);
         sorts.printArray(a);
     }
 }

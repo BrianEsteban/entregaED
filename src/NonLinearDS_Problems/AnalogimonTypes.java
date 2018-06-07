@@ -1,21 +1,12 @@
-package Graphs;
+package NonLinearDS_Problems;
 
+import java.io.*;
 import java.util.*;
 
 /**
- * Reresentación de grafos con listas adyacentes
+ * https://www.urionlinejudge.com.br/judge/en/problems/view/2562
  * @author Brian Esteban Barreto Cardozo
  */
-
-public class GraphList
-{
-    public static void main(String args[]) 
-    {
-        Scanner sc = new Scanner(System.in);
-        int nodes = sc.nextInt();
-        Graph g = new Graph(nodes);
-    }
-}
 
 class Node
 {        
@@ -33,7 +24,6 @@ class Node
         this.distance = distance;
     }
 }
-
 class Graph 
 {
     int nodes;          //numero de nodos
@@ -72,8 +62,51 @@ class Graph
     {
         return link[node];
     }
+    
+    /**
+     * Contador de la cantidad de elementos de una lista de adyacencia que puede tener valres que tambien tengan lista de adyacencia
+     * @param n
+     * @return 
+     */
+    public int countAnalogimon(int n)
+    {
+        int count = 0;
+        List temp = adyacentes(n);
+        for (int i = 0; i < temp.size(); i++) 
+        {
+            while(!adyacentes((int) temp.get(i)).isEmpty())
+                count++;
+        }
+        return count;
+    }
 }
 
-
+public class AnalogimonTypes 
+{
+    /**
+     * Prueba del ejercicio Analogimon types con grafos sobre listas de adyacencia
+     * @param args
+     * @throws IOException 
+     */
+    public static void main(String[] args) throws IOException 
+    {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        Scanner sc = new Scanner(System.in);
+        
+        String input = br.readLine();
+        String[] data = input.split(" ");
+        Graph g = new Graph(Integer.parseInt(data[0]));
+        
+        for (int i = 0; i < Integer.parseInt(data[1]); i++) 
+        {
+            input = br.readLine();
+            String[] dat = input.split(" ");
+            g.insertNode(Integer.parseInt(data[0]), Integer.parseInt(data[1]), 0);
+        }
+        
+        int analogimon = sc.nextInt();
+        System.out.println(g.countAnalogimon(analogimon));
+    }
+}
 
 

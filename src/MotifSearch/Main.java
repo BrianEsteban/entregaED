@@ -62,8 +62,8 @@ public class Main
     {
         if (size == 1) 
         {
-            compareMotif(subsequence + "A");
             compareMotif(subsequence + "C");
+            compareMotif(subsequence + "A");
             compareMotif(subsequence + "G");
             compareMotif(subsequence + "T");
         }else
@@ -83,7 +83,7 @@ public class Main
     {
         try
         {
-            FileReader fr = new FileReader("C:/Documents and Settings/BRIAN/Mis documentos/sequences.txt");
+            FileReader fr = new FileReader("C:/Motif/sequences.txt");
             BufferedReader br = new BufferedReader(fr);
             
             String input = br.readLine();

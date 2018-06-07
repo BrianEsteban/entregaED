@@ -308,10 +308,8 @@ public class BinaryTree
             int heigthRight = height(temp.right);//altura del nodo por derecha hasta que no tenga hijos y empiece la recurisividad
             int greatestHeight = Math.max(heigthLeft, heigthRight); //elige la altura máxima entre los sub-árboles
             return greatestHeight + 1;
-        }
-        
+        }   
     }
-        
     
     /**
      * Busca un nodo en el árbol con cierto valor

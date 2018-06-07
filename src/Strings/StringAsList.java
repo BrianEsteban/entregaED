@@ -38,9 +38,19 @@ public class StringAsList
      * @param regex
      * @return
      */
-    public StringAsList[] split(StringAsList regex)
+    public char[] split(StringAsList regex)
     {
-        StringAsList[] response = null;
+        char[] response = null;
+        StringNode temp = head;
+        int i=0;
+        
+        while(temp.next != null)
+        {
+            response[i] = temp.character;   //el arreglo en su posicion i va a estar dado por la info almacenada en el nodo
+            temp = temp.next;
+            i++;
+        } 
+        
         return response; 
     }
 
